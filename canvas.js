@@ -25,38 +25,46 @@ c.lineTo(450, 200);
 c.strokeStyle = "blue";
 c.stroke();
 
-//Arc: (x, y, radius, startAngle, endAngle, clockwise)
-c.beginPath();
-c.arc(300, 300, 50, 0, Math.PI * 2, false);
-c.strokeStyle = "purple";
-c.stroke();
-
-var x = 100;
-var y = 100;
-var dx = 2;
-var dy = 2;
-var radius = 40;
 var wallBooster = 1.05;
+
+//Circle Object
+function Circle(x, y, radius, dx, dy) {
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.dx = dx;
+  this.dy = dy;
+
+  this.draw = function() {
+    c.beginPath();
+    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    c.stroke();
+  };
+
+  this.update = function() {
+    //Handle screen edge collisions
+    if (this.x + this.radius > window.innerWidth || this.x - this.radius < 0) {
+      this.dx = -(this.dx * wallBooster);
+    }
+
+    if (this.y + radius > window.innerHeight || this.y - this.radius < 0) {
+      this.dy = -(this.dy * wallBooster);
+    }
+
+    this.x += this.dx;
+    this.y += this.dy;
+
+    this.draw();
+  };
+}
+
+var circle = new Circle(100, 100, 50, 2, 3);
 
 //Animations
 function animate() {
   requestAnimationFrame(animate);
-  c.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  c.beginPath();
-  c.arc(x, y, radius, 0, Math.PI * 2, false);
-  c.stroke();
-
-  //Reflection on edges of screen
-  if (x + radius > window.innerWidth || x - radius < 0) {
-    dx = -(dx * wallBooster);
-  }
-
-  if (y + radius > window.innerHeight || y - radius < 0) {
-    dy = -(dy * wallBooster);
-  }
-
-  x += dx;
-  y += dy;
+  c.clearRect(0, 0, window.innerWidth, innerHeight);
+  circle.update();
   console.log("Animate");
 }
 
