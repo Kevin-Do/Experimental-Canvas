@@ -58,14 +58,26 @@ function Circle(x, y, radius, dx, dy) {
   };
 }
 
-var circle = new Circle(100, 100, 50, 2, 3);
+var circleList = [];
+
+for (var i = 0; i < 50; i++) {
+  var radius = 30;
+  var x = Math.random() * (innerWidth - radius * 2) + radius;
+  var y = Math.random() * (innerHeight - radius * 2) + radius;
+  var dx = Math.random() - 0.5;
+  var dy = Math.random() - 0.5;
+
+  circleList.push(new Circle(x, y, radius, dx * 3, dy * 3));
+}
 
 //Animations
 function animate() {
   requestAnimationFrame(animate);
-  c.clearRect(0, 0, window.innerWidth, innerHeight);
-  circle.update();
-  console.log("Animate");
+  c.clearRect(0, 0, innerWidth, innerHeight);
+
+  for (var i = 0; i < 50; i++) {
+    circleList[i].update();
+  }
 }
 
 animate();
