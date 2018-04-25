@@ -30,3 +30,34 @@ c.beginPath();
 c.arc(300, 300, 50, 0, Math.PI * 2, false);
 c.strokeStyle = "purple";
 c.stroke();
+
+var x = 100;
+var y = 100;
+var dx = 2;
+var dy = 2;
+var radius = 40;
+var wallBooster = 1.05;
+
+//Animations
+function animate() {
+  requestAnimationFrame(animate);
+  c.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  c.beginPath();
+  c.arc(x, y, radius, 0, Math.PI * 2, false);
+  c.stroke();
+
+  //Reflection on edges of screen
+  if (x + radius > window.innerWidth || x - radius < 0) {
+    dx = -(dx * wallBooster);
+  }
+
+  if (y + radius > window.innerHeight || y - radius < 0) {
+    dy = -(dy * wallBooster);
+  }
+
+  x += dx;
+  y += dy;
+  console.log("Animate");
+}
+
+animate();
