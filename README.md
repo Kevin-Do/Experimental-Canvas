@@ -152,3 +152,28 @@ function animate() {
   }
 }
 ```
+
+Canvas Interaction:
+
+* Use an event listener to capture the mouse position
+* Use the x,y to detect proximity
+
+```js
+var mousePos = {
+  x: 100,
+  y: 100
+};
+
+window.addEventListener("mousemove", function(e) {
+  mousePos.x = e.x;
+  mousePos.y = e.y;
+  console.log(mousePos);
+});
+
+this.mouseProximity = function(range) {
+  xDiff = Math.abs(mousePos.x - this.x) <= range;
+  yDiff = Math.abs(mousePos.y - this.y) <= range;
+  this.highlighted = xDiff && yDiff;
+  this.draw();
+};
+```
