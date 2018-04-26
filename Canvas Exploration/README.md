@@ -10,6 +10,12 @@ var canvas = document.querySelector("canvas");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+//Event Listener for resizing browser
+window.addEventListener("resize", function(e) {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
 ```
 
 Drawing a Rectangle

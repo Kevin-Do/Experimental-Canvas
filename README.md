@@ -1,6 +1,6 @@
 ## Web Graphics Experiments
 
-An exploration into rendering high-performance and interative graphics for web applications.
+An exploration into rendering high-performance and interactive graphics for web applications.
 
 HTML5 Canvas:
 
@@ -9,8 +9,9 @@ cd Canvas\ Exploration/
 http-server
 ```
 
-* Exposes a bitmap canvas for rendering graphics on the fly
-* This graphics system does not have a DOM, allowing the developer to animate a lot of objects without overhead
+Exposes a bitmap canvas for rendering graphics on the fly.
+This graphics system does not have a DOM, allowing the developer to animate a lot of objects without overhead
+
 * Pros:
   * Drawing capabilities are lightning-fast
   * Can respond to Javascript events, being that it drawn by scripting
@@ -21,3 +22,13 @@ http-server
   * Immediate rendering, everything is represented as pixels in a canvas buffer
 
 SVG:
+
+```
+cd SVG\ Exploration/
+http-server
+```
+
+TODO:
+
+* Add webpack configuration for hot-reloading
+* Animation and benchmark tests

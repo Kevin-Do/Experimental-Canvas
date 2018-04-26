@@ -4,12 +4,12 @@ var canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-//Event Listener for Mouse Position
 var mousePos = {
   x: 100,
   y: 100
 };
 
+//Event Listeners
 window.addEventListener("mousemove", function(e) {
   mousePos.x = e.x;
   mousePos.y = e.y;
