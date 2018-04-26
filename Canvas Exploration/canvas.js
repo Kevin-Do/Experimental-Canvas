@@ -15,6 +15,11 @@ window.addEventListener("mousemove", function(e) {
   mousePos.y = e.y;
 });
 
+window.addEventListener("resize", function(e) {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
 //Super object for drawing in a 2D space
 var c = canvas.getContext("2d");
 
